@@ -2,7 +2,6 @@ language: c
 
 os:
   - linux
-  - osx
 dist:
   # Request Ubuntu 14 as linux
   - trusty
