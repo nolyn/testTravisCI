@@ -7,7 +7,7 @@ cd /tmp
 
 # get the new version:
 echo "Cloning YUView"
-git clone https://github.com/IENT/YUView
+git clone https://github.com/IENT/YUView.git
 cd YUView
 new_version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
 echo ${new_version}
