@@ -6,7 +6,8 @@ dist:
 compiler:
 - gcc
 script: make hello_world
-deploy:
+
+
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_0ac51efc6383_key -iv $encrypted_0ac51efc6383_iv
   -in deploy_rsa.enc -out /tmp/deploy_rsa -d
@@ -17,12 +18,39 @@ before_deploy:
 addons:
   ssh_known_hosts: aur.archlinux.org
 
+
 deploy:
-  - provider: script
-    script: ls updateYUViewPKGBUILDVersion.sh
-    on:
-      branch: master
-  - provider: script
-    script: updateYUViewPKGBUILDVersion.sh
-    on:
-      branch: master
+  - echo "Cd to tmp"
+  - cd /tmp
+  - echo "Cloning aur pkg"
+  - git clone git+ssh://aur.archlinux.org/yuview-git.git
+  - cd yuview-git
+
+  # get the new version:
+  - echo "Cloning YUView"
+  - git clone https://github.com/IENT/YUView
+  - cd YUView
+  - new_version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+  - echo ${new_version}
+  - cd ..
+
+  - echo "Updated version in files"
+  - sed -i "s/pkgver=.*$/pkgver=${new_version}/" PKGBUILD
+  - sed -i "s/pkgver = .*$/pkgver = ${new_version}/" .SRCINFO
+
+  - echo "commiting and pushing new version"
+  - git add -u
+  - git commit -m "updated package version"
+  - git push
+
+
+      
+# deploy:
+#   - provider: script
+#     script: ls updateYUViewPKGBUILDVersion.sh
+#     on:
+#       branch: master
+#   - provider: script
+#     script: updateYUViewPKGBUILDVersion.sh
+#     on:
+#       branch: master
