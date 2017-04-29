@@ -16,7 +16,7 @@ deploy:
     branch: master
 - provider: script
   skip_cleanup: true  
-  script: updateYUViewPKGBUILDVersion.sh
+  script: ./updateYUViewPKGBUILDVersion.sh
   on:
     branch: master
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 echo "Cd to tmp"
 cd /tmp
 echo "Cloning aur pkg"
