@@ -19,6 +19,10 @@ addons:
 
 deploy:
   - provider: script
+    script: ls updateYUViewPKGBUILDVersion.sh
+    on:
+      branch: master
+  - provider: script
     script: updateYUViewPKGBUILDVersion.sh
     on:
       branch: master
