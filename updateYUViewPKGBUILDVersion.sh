@@ -13,12 +13,12 @@ new_version=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --
 echo ${new_version}
 cd ..
 
-# echo "Updated version in files"
-# sed -i "s/pkgver=.*$/pkgver=${new_version}/" PKGBUILD
-# sed -i "s/pkgver = .*$/pkgver = ${new_version}/" .SRCINFO
+echo "Updated version in files"
+sed -i "s/pkgver=.*$/pkgver=${new_version}/" PKGBUILD
+sed -i "s/pkgver = .*$/pkgver = ${new_version}/" .SRCINFO
 
-# echo "commiting and pushing new version"
-# git add -u
-# git commit -m "updated package version"
-# git push
+echo "commiting and pushing new version"
+git add -u
+git commit -m "updated package version"
+git push
 
