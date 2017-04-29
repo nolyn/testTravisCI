@@ -2,8 +2,8 @@
 echo "Cd to tmp"
 cd /tmp
 echo "Cloning aur pkg"
-ssh -vT aur@aur.archlinux.org 
-git clone git+ssh://aur.archlinux.org/yuview-git.git
+#ssh -vT aur@aur.archlinux.org 
+git clone git+ssh://aur@aur.archlinux.org/yuview-git.git
 cd yuview-git
 
 # # get the new version:
