@@ -1,9 +1,9 @@
 #!/bin/bash
 echo "Cd to tmp"
 cd /tmp
-# echo "Cloning aur pkg"
-# git clone git+ssh://aur.archlinux.org/yuview-git.git
-# cd yuview-git
+echo "Cloning aur pkg"
+git clone git+ssh://aur.archlinux.org/yuview-git.git
+cd yuview-git
 
 # get the new version:
 echo "Cloning YUView"
